@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <!--配置数据源-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/mitaole_db"/>
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+        <property name="password" value="8286565161"/>
+        <property name="user" value="root"/>
+    </bean>
+    <!--配置sessionFactory-->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="cacheableMappingLocations">
+            <list>
+                <value>classpath:ehcache.xml</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.c3p0.min_size">10</prop>
+                <prop key="hibernate.c3p0.max_size">3000</prop>
+                <prop key="hibernate.c3p0.timeout">2000</prop>
+                <prop key="hibernate.c3p0.idle_test_period">3600</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+                <prop key="hibernate.cache.use_second_level_cache">true</prop>
+                <prop key="hibernate.cache.use_query_cache">true</prop>
+                <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory</prop>
+                <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/mitaole_db</prop>
+                <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
+            </props>
+        </property>
+        <property name="mappingLocations">
+            <list>
+                <value>classpath:mapper/UserTbDTO.hbm.xml</value>
+                <value>classpath:mapper/AccountTbDTO.hbm.xml</value>
+                <value>classpath:mapper/PermissionTbDTO.hbm.xml</value>
+                <value>classpath:mapper/RoleTbDTO.hbm.xml</value>
+                <value>classpath:mapper/BrandTbDTO.hbm.xml</value>
+                <value>classpath:mapper/ClassifyBrandTbDTO.hbm.xml</value>
+                <value>classpath:mapper/ClassifyTbDTO.hbm.xml</value>
+                <value>classpath:mapper/ConfigTbDTO.hbm.xml</value>
+                <value>classpath:mapper/ModelConfigTbDTO.hbm.xml</value>
+                <value>classpath:mapper/ModelTbDTO.hbm.xml</value>
+                <value>classpath:mapper/TypeTbDTO.hbm.xml</value>
+            </list>
+        </property>
+    </bean>
+    <!--事物配置-->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+</beans>

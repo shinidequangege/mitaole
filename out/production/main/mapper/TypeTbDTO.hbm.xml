@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="cc.xpress.mitaole.user.dto.TypeTbDTO" table="type_tb" schema="mitaole_db">
+        <id name="typeId">
+            <column name="type_id" sql-type="int(11)"/>
+        </id>
+        <property name="typeName">
+            <column name="type_name" sql-type="varchar(100)" length="100"/>
+        </property>
+        <property name="typeStep">
+            <column name="type_step" sql-type="int(11)"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cc.xpress.mitaole.user.dto">
+<class name="ModelConfigTbDTO" table="model_config_tb" schema="mitaole_db">
+    <id name="mcId">
+        <column name="mc_id" sql-type="int(11)"/>
+        <generator class="native"/>
+    </id>
+    <property name="mcDescribe">
+        <column name="mc_describe" sql-type="varchar(100)"/>
+    </property>
+    <property name="mcPrice" >
+        <column name="mc_price" sql-type="int(11)"/>
+    </property>
+    <many-to-one name="configTbDTO" column="mc_config_id" cascade="save-update" fetch="join" class="ConfigTbDTO"/>
+</class>
+</hibernate-mapping>

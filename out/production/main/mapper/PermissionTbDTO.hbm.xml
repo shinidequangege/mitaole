@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="cc.xpress.mitaole.user.dto.PermissionTbDTO" table="permission_tb" schema="mitaole_db">
+        <id name="pmsId">
+            <column name="pms_id" sql-type="int(11)"/>
+        </id>
+        <property name="pmsValue">
+            <column name="pms_value" sql-type="varchar(100)" length="100"/>
+        </property>
+        <property name="pmsName">
+            <column name="pms_name" sql-type="varchar(100)" length="100"/>
+        </property>
+    </class>
+</hibernate-mapping>

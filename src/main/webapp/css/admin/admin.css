@@ -1,0 +1,12 @@
+.table{
+    width: 500px;
+    height: auto;
+    border: 1px solid #dfdfdf;
+    border-collapse: collapse;
+}
+.table th,td{
+    border-left:1px solid #dfdfdf;
+    border-bottom: 1px solid #dfdfdf;
+    height: 20px;
+    text-align: center;
+}

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cc.xpress.mitaole.user.dto">
+    <class name="UserTbDTO" table="user_tb" schema="mitaole_db" >
+        <id name="userId">
+            <column name="user_id" sql-type="bigint(20)"/>
+            <generator class="native"/>
+        </id>
+        <property name="userLoginAccount">
+            <column name="user_login_account" sql-type="varchar(100)" length="100"/>
+        </property>
+        <property name="userLoginPwd">
+            <column name="user_login_pwd" sql-type="varchar(32)" length="32"/>
+        </property>
+        <property name="userIcon">
+            <column name="user_icon" sql-type="varchar(200)" length="200" />
+        </property>
+        <property name="userLevel">
+            <column name="user_level" sql-type="char(1)" length="1" />
+        </property>
+        <property name="userSalt">
+            <column name="user_salt" sql-type="varchar(30)" length="30"/>
+        </property>
+        <property name="userCore">
+            <column name="user_core" sql-type="int(11)" />
+        </property>
+        <many-to-one name="accountTbDTO" cascade="all" unique="true" class="AccountTbDTO" column="account_id" lazy="false" />
+        <set name="roleTbDTOList" table="user_role_tb" lazy="true" cascade="save-update">
+            <key column="ur_user_id"/>
+            <many-to-many class="RoleTbDTO"  column="ur_role_id"/>
+        </set>
+    </class>
+</hibernate-mapping>

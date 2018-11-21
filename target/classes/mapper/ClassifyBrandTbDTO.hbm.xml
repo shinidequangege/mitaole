@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="cc.xpress.mitaole.user.dto.ClassifyBrandTbDTO" table="classify_brand_tb" schema="mitaole_db">
+        <id name="cbId">
+            <column name="cb_id" sql-type="int(11)"/>
+        </id>
+    </class>
+</hibernate-mapping>
